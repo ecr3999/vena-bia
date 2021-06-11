@@ -15,19 +15,6 @@
           Welcome to VENA
         </h1>
       </v-col>
-      
-   <v-text-field
-            v-model="password"
-            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-            :rules="[rules.required, rules.min]"
-            :type="show1 ? 'text' : 'password'"
-            name="input-10-1"
-            label="Normal with hint text"
-            hint="At least 8 characters"
-            counter
-            @click:append="show1 = !show1"
-          ></v-text-field>
-    </v-row>
 
        <v-row dense>
         <v-col cols="12">
