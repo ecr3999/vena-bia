@@ -15,6 +15,8 @@
           Welcome to VENA
         </h1>
       </v-col>
+      
+    </v-row>
 
        <v-row dense>
         <v-col cols="12">
