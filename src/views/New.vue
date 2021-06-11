@@ -78,7 +78,7 @@
 
 
     <v-text-field
-      v-model="perusahaan_terafiliasi"
+      v-model="bidang_usaha"
       :error-messages="bidangUsahaErrors"
       :counter="35"
       label="Bidang Usaha"
@@ -101,11 +101,43 @@
    v-model = "bentuk_usaha"
       :error-messages="bidangUsahaErrors"
       :counter="35"
+      label="Bentuk Usaha"
       required
       v-show="toggleBentukUsahaLain"
       @input="$v.bentuk_usaha.$touch()"
       @blur="$v.bentuk_usaha.$touch()"
     ></v-text-field>
+
+      <v-file-input
+  multiple
+    accept="pdf/*"
+    label="Dokumen Pendukung"
+  ></v-file-input>  
+
+  <v-card>
+    <v-card-text>
+      Mohon melampirkan Dokumen-dokumen berikut:
+      <ul v-if="bentuk_usaha_sel !== 'Perorangan'">
+        <li>Akta Pendirian</li>
+        <li>Nomor Induk Berusaha (NIB)/Tanda Daftar Perusahaan(TDP)</li>
+        <li>Izin Usaha/Izin Komersial/Izin operasional</li>
+        <li>Kartu Identitas Direksi/Pengurus</li>
+        <li>Surat Pengukuhan Pengusaha Kena Pajak (SPPKP) atau surat pernyataan Pengusaha Non PKP</li>
+        <li>NPWP</li>
+    </ul>
+    
+   <ul v-if="bentuk_usaha_sel === 'Perorangan'">
+        <li>Kartu Identitas</li>
+        <li>Surat Pengukuhan Pengusaha Kena Pajak (SPPKP) atau surat pernyataan Pengusaha Non PKP</li>
+        <li>NPWP</li>
+        <li>KITAS/KITAP (Khusus WNA)</li>
+    </ul>
+    
+    </v-card-text>
+  </v-card>
+  
+    <v-spacer></v-spacer>
+  
         <v-btn
           color="primary"
           @click="e1 = 2"
@@ -113,8 +145,9 @@
           Continue
         </v-btn>
 
-        <v-btn text>
-          Cancel
+        <v-btn text
+          @click="clear()">
+          Reset
         </v-btn>
       </v-stepper-content>
 
@@ -141,17 +174,27 @@
       @input="$v.bentuk_usaha.$touch()"
       @blur="$v.bentuk_usaha.$touch()"
     ></v-text-field>
-
+        <v-btn
+          color="primary"
+          @click="e1 = 1"
+          class="mr-4"
+        >
+        Back
+        </v-btn>
         <v-btn
           color="primary"
           @click="e1 = 3"
+          class="mr-4"
         >
           Continue
         </v-btn>
 
-        <v-btn text>
-          Cancel
+        <v-btn text
+          @click="clear()">
+          Reset
         </v-btn>
+      <v-spacer></v-spacer>
+    </v-row>
       </v-stepper-content>
 
       <v-stepper-content step="3">
@@ -170,16 +213,24 @@
       @change="$v.checkbox.$touch()"
       @blur="$v.checkbox.$touch()"
     ></v-checkbox>
-        
+        <v-btn
+          color="primary"
+          @click="e1 = 2"
+          class="mr-4"
+        >
+        Back
+        </v-btn>
         <v-btn
           color="primary"
           @click="e1 = 4"
+          class="mr-4"
         >
           Continue
         </v-btn>
 
-        <v-btn text>
-          Cancel
+        <v-btn text
+          @click="clear()">
+          Reset
         </v-btn>
       </v-stepper-content>
       
@@ -197,8 +248,18 @@
       width="500"
     >
      <template v-slot:activator="{ on, attrs }">
-        <v-btn text>
-          Cancel
+        <v-btn
+          color="primary"
+          @click="e1 = 2"
+          class="mr-4"
+        >
+        Back
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn text
+          @click="clear()"
+          class="mr-4">
+          Reset
         </v-btn>
         <v-btn
           color="red lighten-2"
@@ -291,7 +352,9 @@
       ],
       bentuk_usaha_sel: '',
       bentuk_usaha: '',
+      dokumen_pendukung: '',
       toggleBentukUsahaLain: '',
+      peroranganFlag: '',
       checkbox: false,
       dialog:'',
       e1: 1,
@@ -369,10 +432,18 @@
       },
       clear () {
         this.$v.$reset()
-        this.name = ''
-        this.email = ''
-        this.cabang = null
-        this.checkbox = false
+        this.name = '';
+        this.email = '';
+        this.cabang = null;
+        this.checkbox = false;
+        this.grup_perusahaan = null;
+        this.bidang_usaha = '';
+        this.bentuk_usaha_sel = '';
+        this.bentuk_usaha = '';
+        this.perusahaan_terafiliasi = '';
+        this.dokumen_pendukung = '';
+        this.e1 = '1';
+
       },
     },
 
@@ -385,6 +456,10 @@
         }
         else
         {
+          if(val = "Perorangan")
+          {
+            this.peroranganFlag = 'X';
+          }
         this.toggleBentukUsahaLain = '';
         this.bentuk_usaha = val;
         }
