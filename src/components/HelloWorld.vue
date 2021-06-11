@@ -15,6 +15,18 @@
           Welcome to VENA
         </h1>
       </v-col>
+      
+   <v-text-field
+            v-model="password"
+            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+            :rules="[rules.required, rules.min]"
+            :type="show1 ? 'text' : 'password'"
+            name="input-10-1"
+            label="Normal with hint text"
+            hint="At least 8 characters"
+            counter
+            @click:append="show1 = !show1"
+          ></v-text-field>
     </v-row>
 
        <v-row dense>
@@ -100,11 +112,11 @@
                           prepend-inner-icon="mdi-lock"
                           v-model="password"
                           min="8"
-                          :append-icon="e1 ? 'mdi-eye' : 'mdi-eye-off'"
-                          :append-icon-cb="() => (e1 = !e1)"
-                          :type="e1 ? 'text' : 'password'"
+                          :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                          :append-icon-cb="() => (show1 = !show1)"
+                          :type="show1 ? 'text' : 'password'"
                           :rules="[rules.required, rules.min]"
-                          @click:append="e1 = !e1"
+                          @click:append="show1 = !show1"
                           hint="At least 8 characters"
                           counter
                           required
@@ -186,8 +198,8 @@
       isLoggingIn: true,
       shouldStayLoggedIn: true,
        },
-    show1: true,
     dialog:'',
+    show1: false,
               
     rules: {
           required: value => !!value || 'Required.',
@@ -200,6 +212,6 @@
       return 'Invalid Email';
     },
         },
-    }),  
+    })
   }
 </script>
