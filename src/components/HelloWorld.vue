@@ -31,8 +31,9 @@
               Ingin melakukan pendaftaran vendor baru?
             </v-card-subtitle>
 
-            <v-card-actions>
-              <v-btn text>
+            <v-card-actions >
+              <v-btn  to="/new" depressed 
+              color="#385F73">
                 MULAI daftar
               </v-btn>
             </v-card-actions>
@@ -68,41 +69,21 @@
         </v-btn>
        </v-card-actions>
       </template>
-        
 
-         <v-card>
-        <v-card-title class="text-h5 grey lighten-2">
-          Surat Pernyataan
-        </v-card-title>
+              <v-card>          
+                
+                <v-toolbar dense>
+                  
 
-        <v-card-text>
-          HI
-       </v-card-text>
-
-        <v-divider></v-divider>
-
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            color="primary"
-            text
+      <v-toolbar-title>Masuk Sebagai Vendor Terdaftar</v-toolbar-title>
+ 
+<v-spacer></v-spacer>
+      <v-btn icon 
             @click="dialog = false"
-          >
-            I accept
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-          </v-card>
-        </v-col>
-       </v-row>
-
-    <v-row class="text-center">      
-      <v-col class="mb-4">
-<v-container fluid fill-height class="loginOverlay">
-          <v-layout flex align-center justify-center>
-            <v-flex xs12 sm4 elevation-6>
-              <v-card>
+            class = "text-right">
+        <v-icon>mdi-close</v-icon>
+      </v-btn>
+    </v-toolbar>
                 <v-card-text class="pt-4">
                   <div>
                       <v-form v-model="valid" ref="form">
@@ -136,11 +117,13 @@
                   </div>
                 </v-card-text>
               </v-card>
-            </v-flex>
-          </v-layout>
-       </v-container>
-      </v-col>
-    </v-row>
+         <v-card>
+    
+      </v-card>
+    </v-dialog>
+          </v-card>
+        </v-col>
+       </v-row>
   </v-container>
 </template>
 

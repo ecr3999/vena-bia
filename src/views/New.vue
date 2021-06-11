@@ -76,20 +76,7 @@
       @blur="$v.perusahaan_terafiliasi.$touch()"
     ></v-text-field>
 
-        <v-btn
-          color="primary"
-          @click="e1 = 2"
-        >
-          Continue
-        </v-btn>
 
-        <v-btn text>
-          Cancel
-        </v-btn>
-      </v-stepper-content>
-
-      <v-stepper-content step="2">
-        
     <v-text-field
       v-model="perusahaan_terafiliasi"
       :error-messages="bidangUsahaErrors"
@@ -119,6 +106,41 @@
       @input="$v.bentuk_usaha.$touch()"
       @blur="$v.bentuk_usaha.$touch()"
     ></v-text-field>
+        <v-btn
+          color="primary"
+          @click="e1 = 2"
+        >
+          Continue
+        </v-btn>
+
+        <v-btn text>
+          Cancel
+        </v-btn>
+      </v-stepper-content>
+
+      <v-stepper-content step="2">
+           <v-text-field
+  label = "Nomor Rekening"
+      :counter="40"
+      required
+      @input="$v.bentuk_usaha.$touch()"
+      @blur="$v.bentuk_usaha.$touch()"
+    ></v-text-field>
+           <v-text-field
+   label = "Nama Pemilik Rekening"
+      :counter="40"
+      required
+      @input="$v.bentuk_usaha.$touch()"
+      @blur="$v.bentuk_usaha.$touch()"
+    ></v-text-field>
+    
+           <v-text-field
+   label = "Nama Bank"
+      :counter="40"
+      required
+      @input="$v.bentuk_usaha.$touch()"
+      @blur="$v.bentuk_usaha.$touch()"
+    ></v-text-field>
 
         <v-btn
           color="primary"
@@ -134,7 +156,7 @@
 
       <v-stepper-content step="3">
    <v-text-field
-   v-model = "Pengurus"
+   label= "Pengurus"
       :counter="40"
       required
       @input="$v.bentuk_usaha.$touch()"
