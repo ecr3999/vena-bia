@@ -79,7 +79,7 @@ app>
           { title: 'Home', icon: 'mdi-home', to: '/' },
           { title: 'New Submission', icon: 'mdi-file-document-edit', to: '/new' },
           { title: 'Task List', icon: 'mdi-order-bool-ascending-variant', to: '/tasklist' },
-          { title: 'About', icon: 'mdi-help-box', to: '/about' },
+          { title: 'About', icon: 'mdi-help-box', to: '/about' }
         ],
         }),
   }

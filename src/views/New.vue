@@ -141,6 +141,7 @@
         <v-btn
           color="primary"
           @click="e1 = 2"
+          class="mr-4"
         >
           Continue
         </v-btn>
@@ -193,8 +194,7 @@
           @click="clear()">
           Reset
         </v-btn>
-      <v-spacer></v-spacer>
-    </v-row>
+      <v-spacer></v-spacer> 
       </v-stepper-content>
 
       <v-stepper-content step="3">
